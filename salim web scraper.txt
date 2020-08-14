@@ -1,0 +1,44 @@
+#import libraries#
+import urllib2
+from bs4 import Beautifulsoup
+
+#specify url#
+quote_page = "http://slickdeals.net"
+
+#query the website and return the html to the varaible page !page"#
+
+page = urllib3.urlopen(quote_page)
+
+#parse the html using beautiful soup and store in variable "soup"
+soup = BeautifulSoup(page, "html.parser")
+
+#take out the (div> of the name and get its value#
+
+name_box = soup.find("h1", attrs={"class": "product-name"})
+name = name_box.text.strip()  #strip() is used to remove starting and trailing text#
+print name
+
+price_box = soup.find("h1, attrs={"class":  "product-price"})
+price = price_box.text.strip() #strip() is used to remove starting and trailing text#
+print price
+
+shipping_box = soup.find("h1", attrs={"class": "product-shipping-label"})
+shipping = shipping_box.text.strip()  #strip() is used to remove starting and trailing text#
+print shipping
+
+review_box = soup.find("h1", attrs={"class": " "rate-selected rateit-preset"{)
+review = review_text.text.strip()  #strip() is used to remove starting and trailing text#
+print review
+
+
+
+import csv
+from datetime import datetime
+
+#open a csv file with append, so old data will not be erased#
+with open("index.csv", "a") as csv_file:
+  writer = csv.writer(csv_file)
+  writer.writerow([name, price, shipping, review()])
+
+
+
