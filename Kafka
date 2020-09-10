@@ -1,0 +1,16 @@
+from kafka import KafkaConsumer
+In [2]:
+consumer = KafkaConsumer('zoo-lion',
+                         bootstrap_servers=['localhost:9093'],
+                         api_version=(0,10))
+In [3]:
+for msg in consumer:
+    if msg.value == b'end':
+        break
+        
+    print(msg.value)
+b'Hello World!'
+b'how are you'
+b'I am fine '
+b'really!'
+b'Yes!'
